@@ -18,7 +18,52 @@ class LecturerCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
+    private function getFieldsData($show = FALSE) {
+        return [
+            [
+                'name'=> 'FirstName',
+                'label' => 'FirstName',
+                'type'=> 'text'
+            ],
+            [
+                'name' => 'LastName',
+                'label' => 'LastName',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'Age',
+                'label' => 'Age',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'Organization',
+                'label' => 'Organization',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'WorkPlace',
+                'label' => 'WorkPlace',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'Email',
+                'label' => 'Email',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'PhoneNumber',
+                'label' => 'PhoneNumber',
+                'type' => 'text'
+            ],
+            [
+                'label' => "ProfilePic",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            ]
+        ];
+    }
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -29,6 +74,7 @@ class LecturerCrudController extends CrudController
         CRUD::setModel(\App\Models\Lecturer::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/lecturer');
         CRUD::setEntityNameStrings('lecturer', 'lecturers');
+        $this->crud->addFields($this->getFieldsData());
     }
 
     /**
@@ -39,13 +85,8 @@ class LecturerCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
 
     /**
