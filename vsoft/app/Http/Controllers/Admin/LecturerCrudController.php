@@ -66,7 +66,7 @@ class LecturerCrudController extends CrudController
     }
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()

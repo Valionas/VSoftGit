@@ -34,7 +34,10 @@ class Course extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function lecturers()
+    {
+        return $this->belongsToMany(Lecturer::class, 'coursesWithLecturers','course_id', 'lecturer_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
