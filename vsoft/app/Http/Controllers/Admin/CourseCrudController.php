@@ -29,12 +29,12 @@ class CourseCrudController extends CrudController
             [
                 'name'=> 'Starts',
                 'label' => 'Starts',
-                'type'=> 'text'
+                'type'=> 'date'
             ],
             [
                 'name'=> 'Ends',
                 'label' => 'Ends',
-                'type'=> 'text'
+                'type'=> 'date'
             ],
             [
                 'name'=> 'Organization',
