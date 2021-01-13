@@ -27,6 +27,15 @@ class CourseRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+            'Label'=>'required|min:5',
+            'Starts'=>'required',
+            'Ends'=>'required',
+            'lecturers'=>'required',
+            'Organization'=>'required',
+            'Location'=>'required',
+            
+
+
         ];
     }
 

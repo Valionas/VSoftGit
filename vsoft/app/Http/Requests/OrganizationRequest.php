@@ -27,6 +27,11 @@ class OrganizationRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+            'Name'=>'required|min:2|max:255',
+            'Owner'=>'required',
+            'EstablishmentPlace'=>'required',
+            'WebSite'=>'required',
+
         ];
     }
 

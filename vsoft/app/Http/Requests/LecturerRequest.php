@@ -27,6 +27,13 @@ class LecturerRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+            'FirstName'=>'required|min:2|max:40',
+            'LastName'=>'required|min:2|max:40',
+            'Age'=>'required|min:18|max:80',
+            'Organization'=>'required',
+            'WorkPlace'=>'required',
+            'Email'=>'required',
+            'PhoneNumber'=>'required',
         ];
     }
 
