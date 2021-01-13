@@ -19,6 +19,45 @@ class CourseCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    private function getFieldsData($show = FALSE) {
+        return [
+            [
+                'name'=> 'Label',
+                'label' => 'Labels',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'Starts',
+                'label' => 'Starts',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'Ends',
+                'label' => 'Ends',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'Organization',
+                'label' => 'Organization',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'Location',
+                'label' => 'Location',
+                'type'=> 'text'
+            ],
+            [    // Select2Multiple = n-n relationship (with pivot table)
+                'label'     => "Lecturer/s",
+                'type'      => ($show ? "select": 'select2_multiple'),
+                'name'      => 'lecturers', // the method that defines the relationship in your Model
+// optional
+                'entity'    => 'lecturers', // the method that defines the relationship in your Model
+                'model'     => "App\Models\Lecturer", // foreign key model
+                'attribute' => 'FirstName', // foreign key attribute that is shown to user
+                'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
+            ]
+        ];
+    }
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -29,6 +68,7 @@ class CourseCrudController extends CrudController
         CRUD::setModel(\App\Models\Course::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/course');
         CRUD::setEntityNameStrings('course', 'courses');
+        $this->crud->addFields($this->getFieldsData());
     }
 
     /**
@@ -39,8 +79,8 @@ class CourseCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -77,4 +117,12 @@ class CourseCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+    protected function setupShowOperation()
+{
+    // by default the Show operation will try to show all columns in the db table,
+    // but we can easily take over, and have full control of what columns are shown,
+    // by changing this config for the Show operation
+    $this->crud->set('show.setFromDb', false);
+    $this->crud->addColumns($this->getFieldsData(TRUE));
+}
 }
