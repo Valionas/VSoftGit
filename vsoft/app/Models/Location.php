@@ -34,7 +34,10 @@ class Location extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

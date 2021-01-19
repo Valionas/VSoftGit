@@ -37,6 +37,10 @@ class Course extends Model
     public function lecturers()
     {
         return $this->belongsToMany(Lecturer::class, 'coursesWithLecturers','course_id', 'lecturer_id');
+
+    }
+    public function location(){
+        return $this->belongsTo(Location::class);
     }
     /*
     |--------------------------------------------------------------------------

@@ -41,11 +41,7 @@ class CourseCrudController extends CrudController
                 'label' => 'Organization',
                 'type'=> 'text'
             ],
-            [
-                'name'=> 'Location',
-                'label' => 'Location',
-                'type'=> 'text'
-            ],
+           
             [    // Select2Multiple = n-n relationship (with pivot table)
                 'label'     => "Lecturer/s",
                 'type'      => ($show ? "select": 'select2_multiple'),
@@ -55,7 +51,27 @@ class CourseCrudController extends CrudController
                 'model'     => "App\Models\Lecturer", // foreign key model
                 'attribute' => 'FirstName', // foreign key attribute that is shown to user
                 'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
-            ]
+            ],
+            [  // Select
+                'label'     => "Location",
+                'type'      => 'select',
+                'name'      => 'location_id', // the db column for the foreign key
+             
+                // optional 
+                // 'entity' should point to the method that defines the relationship in your Model
+                // defining entity will make Backpack guess 'model' and 'attribute'
+                'entity'    => 'location', 
+             
+                // optional - manually specify the related model and attribute
+                'model'     => "App\Models\Location", // related model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+             
+                
+             ],
+            
+            
+            
+            
         ];
     }
     /**
