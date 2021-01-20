@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Urban by TEMPLATED</title>
+		<title>VSoft</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -15,7 +15,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="index.html">Urban <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="https://github.com/Valionas/VSoftGit" target="_blank">VSoft <span>by Valentin Kolev</span></a></div>
 				<a href="#menu">Menu</a>
 			</header>
 

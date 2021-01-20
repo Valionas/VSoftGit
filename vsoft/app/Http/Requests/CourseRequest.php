@@ -32,7 +32,7 @@ class CourseRequest extends FormRequest
             'Ends'=>'required',
             'lecturers'=>'required',
             'Organization'=>'required',
-           
+            
             
 
 
