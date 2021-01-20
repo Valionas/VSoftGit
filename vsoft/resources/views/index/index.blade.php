@@ -17,6 +17,13 @@
         }
         fieldset{
             padding:5%;
+            background-color:white;
+        }
+        body{
+            background-image:url("https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-green-fresh-geometric-education-background-design-backgroundfresh-backgroundgeometric-backgroundeducationlearning-image_61172.jpg");
+            background-size:100%;
+            background-position:fixed;
+           
         }
 
     </style>
