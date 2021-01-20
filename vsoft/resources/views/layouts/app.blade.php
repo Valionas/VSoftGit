@@ -22,9 +22,8 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="http://my-exercise.com/">Home</a></li>
+					<li><a href="http://my-exercise.com/admin">Admin Panel</a></li>
 				</ul>
 			</nav>
 

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models;
+use App\Models\Course;
 class IndexController extends Controller
 {
     public function index() {
         //Get data from DB in here and pass it to the view
-        $courses = DB::table('courses')->orderByDesc('id')->get();
-        
+        $courses = Course::with('lecturers','location')->orderByDesc('id')->get();
+       
         // return view('index.index', [
         // //     'title'=>'location',
         // //     'lecturers'=>$courses,

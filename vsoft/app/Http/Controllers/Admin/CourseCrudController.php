@@ -68,6 +68,13 @@ class CourseCrudController extends CrudController
              
                 
              ],
+             [
+                'label' => "CoursePic",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            ]
             
             
             
