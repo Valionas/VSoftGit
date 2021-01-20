@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
-    <style>
+<style>
         p{
             color:black;
             font-style:italic;
@@ -43,46 +42,11 @@
             width:50%;
             margin-right:25%;
         }
-        .radio-container{
-            background-color:white;
-            width:30%;
-            padding-top:1%;
-        }
+       
     </style>
-    <div class="inner">
-        <div class="content">
-            <header>
-                <center><h1>{{$title}}</h1></center>
-            </header>
-            <form action="/search" method="get">
-                <div>
-                    <input type="text" id="searchTextInput"  name="searchTextInput" style="float: right" placeholder="Search here..." />
-                    <br>
-                    <br>
-                    <br>
-                   
-                    
-                    <center>
-                    <h3>Search by criteria</h3>
-                    <div class="radio-container">
-                    <input type="radio" id="windows" name="os" />
-                    <label for="windows">Label</label>
-
-                    <input type="radio" id="mac" name="os" />
-                    <label for="mac">Starts</label>
-
-                    <input type="radio" id="linux" name="os" />
-                    <label for="linux">Ends</label>
-                    </div>
-                    </center>
-                    <br>
-                    <center><input type="submit" id="submitSearch"/></center>
-                </div>
-            </form>
-            <br>
-            @foreach($courses as $course)
-                
-                <fieldset>
+    <center><h1>Your filtered results:</h1></center>
+    @foreach($courses as $course)
+    <fieldset>
                 <legend>Course name: {{$course->Label}}</legend>
                
                 <p>Starts: {{$course->Starts}}</p>
@@ -99,8 +63,5 @@
                 <h4>Location: {{$course->location->name}}</h4>
                 </fieldset>
                 <br>
-            @endforeach
-           
-        </div>
-    </div>
+    @endforeach
 @endsection

@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
+
 class Course extends Model
 {
     use CrudTrait;
@@ -30,7 +32,6 @@ class Course extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
     public static function boot()
 {
     parent::boot();
@@ -45,7 +46,7 @@ public function setImageAttribute($value)
 {
     $attribute_name = "image";
     // destination path relative to the disk above
-    $destination_path = "public/articles";
+    $destination_path = "public/courses";
 
     // if the image was erased
     if ($value==null) {
