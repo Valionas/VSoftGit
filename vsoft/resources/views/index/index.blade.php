@@ -43,11 +43,11 @@
             width:50%;
             margin-right:25%;
         }
-        .radio-container{
+        select{
             background-color:white;
-            width:30%;
-            padding-top:1%;
+            width:50%;
         }
+        
     </style>
     <div class="inner">
         <div class="content">
@@ -64,16 +64,14 @@
                     
                     <center>
                     <h3>Search by criteria</h3>
-                    <div class="radio-container">
-                    <input type="radio" id="windows" name="os" />
-                    <label for="windows">Label</label>
+                    <select name="searchOption">
+                        <option value="Label">Course name</option>
+                        <option value="Starts">Starts</option>
+                        <option value="Ends">Ends</option>
+                        <option value="organization_id">Organization by Id (Private Users only)</option>
+                        <option value="location_id">Location by Id (Private Users only)</option>
 
-                    <input type="radio" id="mac" name="os" />
-                    <label for="mac">Starts</label>
-
-                    <input type="radio" id="linux" name="os" />
-                    <label for="linux">Ends</label>
-                    </div>
+                    </select>
                     </center>
                     <br>
                     <center><input type="submit" id="submitSearch"/></center>

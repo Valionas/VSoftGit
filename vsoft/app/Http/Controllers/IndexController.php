@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 class IndexController extends Controller
 {
+        
     public function index() {
         //Get data from DB in here and pass it to the view
         $courses = Course::with('lecturers','location','organization')->orderBy('created_at')->get();
@@ -27,8 +28,8 @@ class IndexController extends Controller
     }
     public function search(Request $request) {
         $searchQuery = $request->get('searchTextInput');
-        $searchResult = Course::with('lecturers', 'location','organization')->where('Label', 'LIKE',
-            '%'.$searchQuery.'%')->get();
+        $searchCriteria = $request->get('searchOption');
+        $searchResult = Course::with('lecturers', 'location','organization')->where($searchCriteria, 'LIKE', '%'.$searchQuery.'%')->get();     
         return view('index.search', [
             'courses' => $searchResult
         ]);
