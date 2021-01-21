@@ -36,11 +36,7 @@ class CourseCrudController extends CrudController
                 'label' => 'Ends',
                 'type'=> 'date'
             ],
-            [
-                'name'=> 'Organization',
-                'label' => 'Organization',
-                'type'=> 'text'
-            ],
+          
            
             [    // Select2Multiple = n-n relationship (with pivot table)
                 'label'     => "Lecturer/s",
@@ -65,6 +61,22 @@ class CourseCrudController extends CrudController
                 // optional - manually specify the related model and attribute
                 'model'     => "App\Models\Location", // related model
                 'attribute' => 'name', // foreign key attribute that is shown to user
+             
+                
+             ],
+             [  // Select
+                'label'     => "Organization",
+                'type'      => 'select',
+                'name'      => 'organization_id', // the db column for the foreign key
+             
+                // optional 
+                // 'entity' should point to the method that defines the relationship in your Model
+                // defining entity will make Backpack guess 'model' and 'attribute'
+                'entity'    => 'organization', 
+             
+                // optional - manually specify the related model and attribute
+                'model'     => "App\Models\Organization", // related model
+                'attribute' => 'Name', // foreign key attribute that is shown to user
              
                 
              ],
@@ -139,6 +151,14 @@ class CourseCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+    protected function setupShowOperation()
+    {
+        // by default the Show operation will try to show all columns in the db table,
+        // but we can easily take over, and have full control of what columns are shown,
+        // by changing this config for the Show operation
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
    
 }

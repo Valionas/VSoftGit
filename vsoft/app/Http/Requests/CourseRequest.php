@@ -31,7 +31,7 @@ class CourseRequest extends FormRequest
             'Starts'=>'required',
             'Ends'=>'required',
             'lecturers'=>'required',
-            'Organization'=>'required',
+            
             
             
 

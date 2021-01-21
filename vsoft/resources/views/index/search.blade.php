@@ -51,14 +51,14 @@
                
                 <p>Starts: {{$course->Starts}}</p>
                 <p>Ends: {{$course->Ends}}</p>
-                <p>Organization: {{$course->Organization}}</p>
+                <p>Organization: {{$course->organization->Name}}</p>
                 <div class="parentElement">
                     <h4 style="text-align:right">Technology:&nbsp;&nbsp; 
                         <br>
                         <img  style="float:right;margin-right:1%;" src="{{$course->image}}" width="120px" height="120px" alt=""></h4>
                 </div>
                 <h4>Lecturers: @foreach($course->lecturers as $lecturer)
-                    {{$lecturer->FirstName}}&nbsp;<img src="{{$lecturer->image}}" width="25px" height="25px"alt="">,
+                <a href="{{$lecturer->image}}" target="_blank">{{$lecturer->FirstName}}&nbsp;<img src="{{$lecturer->image}}" width="25px" height="25px"alt="">,
                     @endforeach</h4>
                 <h4>Location: {{$course->location->name}}</h4>
                 </fieldset>

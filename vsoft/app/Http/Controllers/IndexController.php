@@ -8,7 +8,7 @@ class IndexController extends Controller
 {
     public function index() {
         //Get data from DB in here and pass it to the view
-        $courses = Course::with('lecturers','location')->orderBy('created_at')->get();
+        $courses = Course::with('lecturers','location','organization')->orderBy('created_at')->get();
        
         // return view('index.index', [
         // //     'title'=>'location',
@@ -27,7 +27,7 @@ class IndexController extends Controller
     }
     public function search(Request $request) {
         $searchQuery = $request->get('searchTextInput');
-        $searchResult = Course::with('lecturers', 'location')->where('Label', 'LIKE',
+        $searchResult = Course::with('lecturers', 'location','organization')->where('Label', 'LIKE',
             '%'.$searchQuery.'%')->get();
         return view('index.search', [
             'courses' => $searchResult

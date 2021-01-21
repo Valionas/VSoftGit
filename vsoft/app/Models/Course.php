@@ -93,6 +93,9 @@ public function setImageAttribute($value)
     public function location(){
         return $this->belongsTo(Location::class);
     }
+    public function organization(){
+        return $this->belongsTo(Organization::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
