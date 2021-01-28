@@ -10,7 +10,19 @@
         fieldset{
             border:1px solid black;
         }
-        legend{
+        fieldset:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            font-weight: bold;
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+    
+             transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+        legend{ 
             color:black;
             font-weight:bold;
             font-size:20px;
@@ -68,8 +80,10 @@
                         <option value="Label">Course name</option>
                         <option value="Starts">Starts</option>
                         <option value="Ends">Ends</option>
-                        <option value="organization_id">Organization by Id (Private Users only)</option>
-                        <option value="location_id">Location by Id (Private Users only)</option>
+                        <option value="organization_id">Organization </option>
+                        <option value="location_id">Location</option>
+                        <option value="lecturers">Lecturers</option>
+
 
                     </select>
                     </center>

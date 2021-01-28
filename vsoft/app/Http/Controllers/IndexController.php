@@ -29,7 +29,28 @@ class IndexController extends Controller
     public function search(Request $request) {
         $searchQuery = $request->get('searchTextInput');
         $searchCriteria = $request->get('searchOption');
-        $searchResult = Course::with('lecturers', 'location','organization')->where($searchCriteria, 'LIKE', '%'.$searchQuery.'%')->get();     
+        if($searchCriteria == 'organization_id') {
+            $searchResult = Course::with('location', 'organization','lecturers')->whereHas('organization',
+                function ($query) use ($searchQuery){
+                $query->where('Name', 'LIKE', '%'.$searchQuery.'%');
+            })->get();
+        }
+        elseif($searchCriteria == 'location_id') {
+            $searchResult = Course::with('location', 'organization','lecturers')->whereHas('location',
+                function ($query) use ($searchQuery){
+                    $query->where('name', 'LIKE', '%'.$searchQuery.'%');
+                })->get();
+        }
+        elseif($searchCriteria=="lecturers"){
+            $searchResult = Course::with('location','organization','lecturers')->whereHas('lecturers',
+                function ($query) use ($searchQuery){
+                    $query->where('FirstName','LIKE','%'.$searchQuery.'%');
+                })->get();
+        }
+        else {
+            $searchResult = Course::with('location', 'organization','lecturers')->where
+            ($searchCriteria, 'LIKE', '%'.$searchQuery.'%')->get();
+        }     
         return view('index.search', [
             'courses' => $searchResult
         ]);
